@@ -1,4 +1,8 @@
 namespace MyHome;
+
+/// <summary>
+/// Provides a means of adjusting lights when used with a light sensor to maintain a consistent light level given variability of an outside light source (the sun).
+/// </summary>
 public class DynamicLightAdjuster : IDynamicLightAdjuster
 {
     IDynamicLightAdjuster.DynamicLightModel _model;
@@ -31,7 +35,7 @@ public class DynamicLightAdjuster : IDynamicLightAdjuster
         if (currentBrightness == 0) return 0;
 
         // y = mx + b
-        return _m * currentBrightness - _b;
+        return _m * currentBrightness + _b;
     }
 
     double GetBrightnessFromIllumination(double illuminationToAdd)
