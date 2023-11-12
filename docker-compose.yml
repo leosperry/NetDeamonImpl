@@ -1,0 +1,21 @@
+services:
+  net-daemon-apps:
+    build: ./
+    container_name: net-daemon-apps
+    restart: unless-stopped
+    depends_on: 
+      - cache
+    environment:
+      - HomeAssistant__Host=192.168.1.2
+      - HomeAssistant__Token=${HomeAssistant__Token}
+      - HomeAssistant__Port=8123
+      - NetDaemon__ApplicationAssembly=NetDaemonApps.dll
+      - Logging__LogLevel__Default=Information  # use Information/Debug/Trace/Warning/Error
+      - TZ=US/Eastern                           # Set your current timezone
+    
+  cache:
+    image: redis:alpine
+    restart: unless-stopped
+    command: redis-server
+    ports:
+      - 6379:6379
