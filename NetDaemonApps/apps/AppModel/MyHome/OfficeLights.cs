@@ -15,7 +15,7 @@ public class OfficeLights
     {
         _lightAdjuster = lightAdjusterFactory(new IDynamicLightAdjuster.DynamicLightModel(){
             //MinIllumination = 7,
-            TargetIllumination = 110,
+            TargetIllumination = 100,
             MinBrightness = 3,
             MaxLightBrightness = 40,
             IlluminationAddedAtMin = 2,
